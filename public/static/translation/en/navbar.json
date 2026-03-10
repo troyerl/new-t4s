@@ -1,0 +1,10 @@
+{
+  "public": {
+    "home": "Home",
+    "inventory": "Inventory",
+    "reservation": "Reservation",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "login": "Login"
+  }
+}

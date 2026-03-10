@@ -1,0 +1,22 @@
+{
+  "inventory": {
+    "coloredText": "¿Qué",
+    "subText": "tenemos?",
+    "description": "A continuación se muestra una lista actual del inventario que tenemos en stock."
+  },
+  "reservation": {
+    "coloredText": "¿Cuándo",
+    "subText": "puedes venir?",
+    "description": "Actualmente solo permitimos 10 personas cada 30 minutos, así que asegúrate de reservar plaza."
+  },
+  "contact": {
+    "coloredText": "¿Dónde",
+    "subText": "nos puede encontrar?",
+    "description": "Nos puedes encontrar en la siguiente dirección:"
+  },
+  "faq": {
+    "coloredText": "¿Cómo",
+    "subText": "podemos ayudar?",
+    "description": "Echa un vistazo a nuestras preguntas frecuentes"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Iniciar sesión en Tools-4-Schools",
+  "subtitle": "Introduce tus credenciales a continuación.",
+  "username": "Nombre de usuario",
+  "password": "Contraseña",
+  "teacherDescription": "Esto es solo un inicio de sesión administrativo, los profesores no tienen acceso.",
+  "linkToReservation": "Si eres profesor y estás intentando hacer una reserva, por favor visita la <LinkComponent>página de Reservas</LinkComponent>.",
+  "loginButton": "Entrar",
+  "loggingIn": "Iniciar sesión..."
+}

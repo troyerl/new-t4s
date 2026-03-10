@@ -1,0 +1,10 @@
+{
+  "title": "Sign in to Tools-4-Schools",
+  "subtitle": "Enter your credentials below.",
+  "username": "Username",
+  "password": "Password",
+  "teacherDescription": "This is an admin sign in only, teachers do not have a sign in.",
+  "linkToReservation": "If you are a teacher trying to create a reservation, please visit the <LinkComponent>Reservation Page</LinkComponent>.",
+  "loginButton": "Login",
+  "loggingIn": "Logging in..."
+}

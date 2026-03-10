@@ -1,0 +1,10 @@
+{
+  "public": {
+    "home": "Inicio",
+    "inventory": "Inventario",
+    "reservation": "Reserva",
+    "contact": "Contacto",
+    "faq": "Preguntas Frecuentes",
+    "login": "Iniciar Sesión"
+  }
+}

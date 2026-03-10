@@ -1,0 +1,22 @@
+{
+  "inventory": {
+    "coloredText": "What",
+    "subText": "do we have?",
+    "description": "Below is a current list of inventory we have in stock."
+  },
+  "reservation": {
+    "coloredText": "When",
+    "subText": "can you come?",
+    "description": "Currently we are only allowing 10 people every 30 minutes, so make sure to reserve a spot!"
+  },
+  "contact": {
+    "coloredText": "Where",
+    "subText": "can you find us?",
+    "description": "You can find us at the following address:"
+  },
+  "faq": {
+    "coloredText": "How",
+    "subText": "can we help?",
+    "description": "Take a look at our frequently asked questions"
+  }
+}
