@@ -4,6 +4,7 @@ import TablePagination from "./components/TablePagination";
 import { useMemo, useState, type JSX } from "react";
 import { MagnifyingGlass } from "../../icons";
 import _ from "lodash";
+import { InputField } from "../form/InputField";
 
 export interface Column {
   name: string;
@@ -93,7 +94,7 @@ const Table = ({
     <>
       {searchable && (
         <div className="mb-4 w-full min-w-50 lg:w-1/3">
-          {/* <InputField
+          <InputField
             label="Search"
             value={search}
             onInput={(value: string) => {
@@ -101,7 +102,7 @@ const Table = ({
             }}
             id="table-search-input"
             endIcon={<MagnifyingGlass />}
-          /> */}
+          />
         </div>
       )}
       <table

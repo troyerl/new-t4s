@@ -24,10 +24,14 @@ export default ({
           <th
             key={column.key}
             scope="col"
-            className={`p-4 text-left text-sm font-semibold text-gray-900 ${column.width ? `w-[200px]` : ""}`}
+            className={`p-4 text-left text-sm font-semibold text-gray-900 ${
+              column.width
+                ? `w-[${column.width}px] min-w-[${column.width}px]`
+                : ""
+            }`}
           >
             <button
-              className="group inline-flex"
+              className="group inline-flex w-full"
               onClick={() =>
                 onSort?.(
                   column.key,
@@ -39,7 +43,7 @@ export default ({
                 )
               }
             >
-              {column.name}
+              <span className="truncate">{column.name}</span>{" "}
               {!!column.sortable && (
                 <span
                   className={`${column.key === sortKey ? "visible bg-gray-200" : "invisible"} ml-2 flex-none rounded-sm text-gray-400 group-hover:visible group-focus:visible`}
