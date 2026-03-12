@@ -3,6 +3,7 @@ import router from "./routes";
 import { useEffect } from "react";
 import i18n from "./i18n";
 import ReactQueryProvider from "./ReactQueryProvider";
+import { SnackbarProvider } from "./components/SnackbarProvider";
 
 const App = () => {
   useEffect(() => {
@@ -11,9 +12,11 @@ const App = () => {
   }, []);
 
   return (
-    <ReactQueryProvider>
-      <RouterProvider router={router} />
-    </ReactQueryProvider>
+    <SnackbarProvider>
+      <ReactQueryProvider>
+        <RouterProvider router={router} />
+      </ReactQueryProvider>
+    </SnackbarProvider>
   );
 };
 

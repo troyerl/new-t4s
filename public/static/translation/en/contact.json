@@ -1,0 +1,30 @@
+{
+  "title": "Feel free to contact us. <BreakComponent/> We'll be glad to hear from you.",
+  "form": {
+    "name": {
+      "text": "Name",
+      "error": "Please enter your name."
+    },
+    "email": {
+      "text": "Email",
+      "error": "Please enter your email."
+    },
+    "school": {
+      "text": "School",
+      "error": "Please enter your school."
+    },
+    "phone": {
+      "text": "Phone (optional)"
+    },
+    "message": {
+      "text": "Message",
+      "error": "Please enter your message."
+    },
+    "submitButton": {
+      "base": "Submit Now",
+      "loading": "Sending..."
+    },
+    "success": "Information has been sent. <BreakComponent/> We will get in contact with you as soon as we can!",
+    "error": "There was an error sending your message. Please try again later."
+  }
+}

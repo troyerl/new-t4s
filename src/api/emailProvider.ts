@@ -1,6 +1,6 @@
-import axiosInstance from "@src/axiosInstance";
-import { IContactForm } from "@src/routes/(publicNavbar)/contact-us/components/ContactForm";
-import { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
+import axiosInstance from "../lib/axiosInstance";
+import type { IContactForm } from "../pages/publicRoutes/Contact/ContactUsForm";
 
 interface IFeedbackForm {
   feedback: {

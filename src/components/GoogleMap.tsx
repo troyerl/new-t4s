@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import { latLng } from "@/lib/constants";
+import { latLng } from "../lib/constants";
 
 declare global {
   interface Window {
@@ -16,12 +14,8 @@ declare global {
   }
 }
 
-const GOOGLE_MAPS_API_KEY =
-  process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ??
-  process.env.PUBLIC_GOOGLE_MAPS_API_KEY ??
-  "";
-const GOOGLE_MAP_ID =
-  process.env.NEXT_PUBLIC_MAP_ID ?? process.env.PUBLIC_MAP_ID ?? "";
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY ?? "";
+const GOOGLE_MAP_ID = import.meta.env.VITE_PUBLIC_MAP_ID ?? "";
 
 export default function GoogleMap() {
   const [scriptError, setScriptError] = useState(false);
@@ -38,9 +32,6 @@ export default function GoogleMap() {
     );
 
     function initializeMap() {
-      if (!mounted) {
-        return;
-      }
       const mapRoot = document.getElementById(mapId);
       if (!mapRoot || !window.google?.maps?.Map) {
         return;
@@ -53,16 +44,19 @@ export default function GoogleMap() {
       });
 
       if (window.google.maps.marker?.AdvancedMarkerElement) {
-        const markerBadge = document.createElement("div");
-        markerBadge.className =
-          "rounded-full bg-primary px-2 py-1 text-xs font-semibold text-white";
-        markerBadge.textContent = "T4S";
+        const iconImg = document.createElement("img");
+        iconImg.src = "../src/assets/img/logo.png"; // ✅ Place this in your public folder
+        iconImg.style.width = "40px";
+        iconImg.style.height = "40px";
+        iconImg.style.transform = "translate(-50%, -50%)"; // 👈 Center horizontally, align bottom vertically
+        iconImg.style.position = "absolute";
+        iconImg.loading = "eager";
 
         new window.google.maps.marker.AdvancedMarkerElement({
           map,
           position: latLng,
           title: "T4S Location",
-          content: markerBadge,
+          content: iconImg,
         });
       }
     }
@@ -97,12 +91,13 @@ export default function GoogleMap() {
       <iframe
         title="Tools-4-Schools location"
         src={`https://maps.google.com/maps?q=${latLng.lat},${latLng.lng}&z=15&output=embed`}
-        className="h-87.5 w-full"
-        loading="lazy"
+        className="h-full min-h-100 w-full min-w-50 rounded-lg"
         referrerPolicy="no-referrer-when-downgrade"
       />
     );
   }
 
-  return <div id="map" className="h-87.5 w-full rounded-lg" />;
+  return (
+    <div id="map" className="h-full min-h-100 w-full min-w-50 rounded-lg" />
+  );
 }

@@ -1,12 +1,10 @@
-"use client";
-
 import {
-  ReactNode,
   createContext,
   useCallback,
   useContext,
   useMemo,
   useState,
+  type ReactNode,
 } from "react";
 
 type SnackbarVariant = "success" | "error" | "info";
@@ -26,7 +24,9 @@ interface SnackbarContextValue {
   enqueueSnackbar: (message: ReactNode, options?: SnackbarOptions) => void;
 }
 
-const SnackbarContext = createContext<SnackbarContextValue | undefined>(undefined);
+const SnackbarContext = createContext<SnackbarContextValue | undefined>(
+  undefined,
+);
 
 function getVariantClasses(variant: SnackbarVariant) {
   if (variant === "success") {
@@ -65,10 +65,7 @@ export function SnackbarProvider({ children }: { children: ReactNode }) {
     [removeSnackbar],
   );
 
-  const contextValue = useMemo(
-    () => ({ enqueueSnackbar }),
-    [enqueueSnackbar],
-  );
+  const contextValue = useMemo(() => ({ enqueueSnackbar }), [enqueueSnackbar]);
 
   return (
     <SnackbarContext.Provider value={contextValue}>

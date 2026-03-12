@@ -1,0 +1,30 @@
+{
+  "title": "No dudes en ponerte en contacto con nosotros. <BreakComponent/> Nos alegrará saber de ti.",
+  "form": {
+    "name": {
+      "text": "Nombre",
+      "error": "Por favor ingrese su nombre."
+    },
+    "email": {
+      "text": "Email",
+      "error": "Por favor ingrese su email."
+    },
+    "school": {
+      "text": "Escuela",
+      "error": "Por favor, ingrese en su colegio."
+    },
+    "phone": {
+      "text": "Teléfono (opcional)"
+    },
+    "message": {
+      "text": "Ingrese aquí",
+      "error": "Por favor, introduzca su mensaje."
+    },
+    "submitButton": {
+      "base": "Enviar ahora",
+      "loading": "Cargando..."
+    },
+    "success": "Se ha enviado información. <BreakComponent/> ¡Nos pondremos en contacto contigo tan pronto como podamos! ",
+    "error": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."
+  }
+}
