@@ -1,5 +1,5 @@
-import axiosInstance from "@src/axiosInstance";
-import { IEvent } from "@src/interface/Event";
+import type { IEvent } from "../interface/Event";
+import axiosInstance from "../lib/axiosInstance";
 
 export default {
   getEvents: async (): Promise<IEvent[]> => {

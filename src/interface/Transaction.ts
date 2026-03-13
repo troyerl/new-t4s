@@ -1,4 +1,4 @@
-import { IShopper } from "./Shopper";
+import type { IShopper } from "./Shopper";
 
 export interface ITransactionItem {
   _id: string;

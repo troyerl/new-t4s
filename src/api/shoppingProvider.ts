@@ -1,7 +1,7 @@
-import axiosInstance from "@src/axiosInstance";
-import { IEventSettings } from "@src/interface/Event";
-import { IShopperInventory } from "@src/interface/Inventory";
-import { IShopper } from "@src/interface/Shopper";
+import type { IEventSettings } from "../interface/Event";
+import type { IShopperInventory } from "../interface/Inventory";
+import type { IShopper } from "../interface/Shopper";
+import axiosInstance from "../lib/axiosInstance";
 
 export default {
   getShoppingSettings: async (): Promise<IEventSettings> => {

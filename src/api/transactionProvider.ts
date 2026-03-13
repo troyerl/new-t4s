@@ -1,10 +1,10 @@
-import axiosInstance from "@src/axiosInstance";
-import {
-  ICustomTransactionItem,
+import type {
   IInventoryDisplay,
-} from "@src/interface/Inventory";
-import { IShopper } from "@src/interface/Shopper";
-import { ITransaction } from "@src/interface/Transaction";
+  ICustomTransactionItem,
+} from "../interface/Inventory";
+import type { IShopper } from "../interface/Shopper";
+import type { ITransaction } from "../interface/Transaction";
+import axiosInstance from "../lib/axiosInstance";
 
 export default {
   getTransactions: async (token?: string): Promise<IInventoryDisplay[]> => {

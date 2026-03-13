@@ -1,5 +1,5 @@
-import axiosInstance from "@src/axiosInstance";
-import { IGetShopperResponse, IShopper } from "@src/interface/Shopper";
+import type { IGetShopperResponse, IShopper } from "../interface/Shopper";
+import axiosInstance from "../lib/axiosInstance";
 
 export default {
   getShopper: async (
