@@ -40,7 +40,7 @@ export const TextAreaField = ({
       <label
         htmlFor={id}
         // className={`peer-focus:text-primary duration-300 absolute ${value ? "top-0 left-3 text-xs" : "top-1/2 left-4 text-base"} -translate-y-1/2 bg-white px-1 text-gray-500 transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:left-4 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:left-3 peer-focus:-translate-y-1/2 peer-focus:bg-white peer-focus:text-xs`}
-        className="absolute text-gray-500 duration-300 transform -translate-y-5 scale-75 top-2 left-3 z-10 origin-[0] bg-white px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-12 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:left-3 peer-focus:scale-75 peer-focus:-translate-y-5"
+        className="absolute text-gray-500 duration-300 transform -translate-y-5 scale-75 top-2 left-3 z-10 origin-left bg-white px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-12 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:left-3 peer-focus:scale-75 peer-focus:-translate-y-5"
       >
         {label}
       </label>

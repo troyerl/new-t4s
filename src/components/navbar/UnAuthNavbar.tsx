@@ -9,11 +9,13 @@ import { routes, unauthNavbarRoutes } from "../../routes/paths";
 interface UnAuthNavbarProps {
   isDarkText?: boolean;
   rightAction?: ReactNode;
+  leftAction?: ReactNode;
 }
 
 export function UnAuthNavbar({
   isDarkText = true,
   rightAction,
+  leftAction,
 }: UnAuthNavbarProps) {
   const loc = useLocation();
   const [open, setOpen] = useState(false);
@@ -24,8 +26,9 @@ export function UnAuthNavbar({
     <header className={isDarkText ? "baseUnderBoxShadow" : ""}>
       <nav
         aria-label="Global"
-        className={`mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:justify-end md:px-8 md:py-5 ${isDarkText ? "bg-white" : "bg-transparent"}`}
+        className={`mx-auto flex max-w-7xl items-center gap-x-2 justify-between px-4 py-3 md:justify-end md:px-8 md:py-5 ${isDarkText ? "bg-white" : "bg-transparent"}`}
       >
+        {leftAction && <div className="grow">{leftAction}</div>}
         <div className="flex items-center gap-2">
           {rightAction ? <div className="md:hidden">{rightAction}</div> : null}
           <button
@@ -40,7 +43,6 @@ export function UnAuthNavbar({
             />
           </button>
         </div>
-
         <div className="hidden items-center gap-x-10 md:flex">
           {unauthNavbarRoutes
             .filter((route) => !route.mobileOnly)

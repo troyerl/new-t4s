@@ -11,6 +11,8 @@ import AddressLink from "../../components/AddressLink";
 import { email } from "../../lib/constants";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { ComboboxField } from "../../components/form/ComboboxField";
+import { SupportedLanguages } from "../../i18n";
 
 const usePageHeroContent = () => {
   const { t } = useTranslation(["common", "hero"]);
@@ -58,7 +60,7 @@ const PublicLayout = () => {
   const loc = useLocation();
   const { pageHeroContent } = usePageHeroContent();
   const heroContent = pageHeroContent[loc.pathname];
-  const { t } = useTranslation(["hero"]);
+  const { t, i18n } = useTranslation(["hero"]);
 
   useEffect(() => {
     const label = Object.values(routes.unauth).find(
@@ -70,7 +72,26 @@ const PublicLayout = () => {
 
   return (
     <>
-      <UnAuthNavbar />
+      <UnAuthNavbar
+        leftAction={
+          <div className="max-w-50">
+            <ComboboxField
+              options={Object.entries(SupportedLanguages).map(
+                ([label, value]) => ({
+                  label,
+                  value,
+                }),
+              )}
+              value={i18n.language}
+              label="Language"
+              id="language-selector"
+              onChange={(e) => {
+                i18n.changeLanguage(e.value);
+              }}
+            />
+          </div>
+        }
+      />
       <HeroSection
         header={
           <StackedHeader

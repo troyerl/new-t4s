@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { latLng } from "../lib/constants";
+import { useTranslation } from "react-i18next";
 
 declare global {
   interface Window {
@@ -19,23 +20,29 @@ const GOOGLE_MAP_ID = import.meta.env.VITE_PUBLIC_MAP_ID ?? "";
 
 export default function GoogleMap() {
   const [scriptError, setScriptError] = useState(false);
+  const { i18n } = useTranslation();
 
   useEffect(() => {
-    if (!GOOGLE_MAPS_API_KEY) {
-      return;
-    }
+    if (!GOOGLE_MAPS_API_KEY) return;
 
     let mounted = true;
     const mapId = "map";
-    const existingScript = document.querySelector<HTMLScriptElement>(
+    const existingScript = document.querySelector(
       'script[data-t4s-google-maps="true"]',
     );
+    if (existingScript) {
+      existingScript.remove();
+    }
+    // Delete the global google object so the new script can re-initialize it
+    if (window.google) {
+      // @ts-ignore
+      delete window.google.maps;
+    }
 
     function initializeMap() {
       const mapRoot = document.getElementById(mapId);
-      if (!mapRoot || !window.google?.maps?.Map) {
-        return;
-      }
+      // Ensure we are still mounted and the element exists
+      if (!mounted || !mapRoot || !window.google?.maps?.Map) return;
 
       const map = new window.google.maps.Map(mapRoot, {
         center: latLng,
@@ -45,10 +52,10 @@ export default function GoogleMap() {
 
       if (window.google.maps.marker?.AdvancedMarkerElement) {
         const iconImg = document.createElement("img");
-        iconImg.src = "../src/assets/img/logo.png"; // ✅ Place this in your public folder
+        iconImg.src = "../src/assets/img/logo.png";
         iconImg.style.width = "40px";
         iconImg.style.height = "40px";
-        iconImg.style.transform = "translate(-50%, -50%)"; // 👈 Center horizontally, align bottom vertically
+        iconImg.style.transform = "translate(-50%, -50%)";
         iconImg.style.position = "absolute";
         iconImg.loading = "eager";
 
@@ -61,36 +68,31 @@ export default function GoogleMap() {
       }
     }
 
-    if (existingScript) {
-      initializeMap();
-      return () => {
-        mounted = false;
-      };
-    }
-
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=marker`;
+    const lang = i18n.resolvedLanguage || i18n.language;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=marker&language=${lang}`;
     script.async = true;
     script.defer = true;
     script.dataset.t4sGoogleMaps = "true";
-    script.onload = initializeMap;
-    script.onerror = () => {
-      if (mounted) {
-        setScriptError(true);
-      }
+    script.onload = () => {
+      if (mounted) initializeMap();
     };
+    script.onerror = () => {
+      if (mounted) setScriptError(true);
+    };
+
     document.head.appendChild(script);
 
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [i18n.language]); // Triggered whenever the language changes
 
   if (!GOOGLE_MAPS_API_KEY || scriptError) {
     return (
       <iframe
         title="Tools-4-Schools location"
-        src={`https://maps.google.com/maps?q=${latLng.lat},${latLng.lng}&z=15&output=embed`}
+        src={`https://maps.google.com/maps?q=${latLng.lat},${latLng.lng}&z=15&output=embed&language=${i18n.language}`}
         className="h-full min-h-100 w-full min-w-50 rounded-lg"
         referrerPolicy="no-referrer-when-downgrade"
       />
