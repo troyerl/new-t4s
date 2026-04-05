@@ -5,7 +5,7 @@ export const LoadingCircle = (props: IconProps) => (
     aria-hidden="true"
     className={[
       "ml-2 inline h-5 w-5 animate-spin fill-gray-600 text-gray-200 dark:fill-gray-300 dark:text-gray-600",
-      props.class || "",
+      props.className || "",
     ].join(" ")}
     viewBox="0 0 100 101"
     fill="none"

@@ -6,8 +6,6 @@ import HeroSection, { StackedHeader } from "../../components/HeroSection";
 import { routes } from "../../routes/paths";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { ComboboxField } from "../../components/form/ComboboxField";
-import { SupportedLanguages } from "../../i18n";
 import HeroContextProvider, {
   useHeroContext,
 } from "../../components/contextProviders/HeroProvider";

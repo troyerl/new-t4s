@@ -39,7 +39,7 @@ export function UnAuthNavbar({
             aria-controls="mobile-menu"
           >
             <HamburgerMenu
-              class={`${isDarkText ? "text-black" : "text-white"} size-7`}
+              className={`${isDarkText ? "text-black" : "text-white"} size-7`}
             />
           </button>
         </div>

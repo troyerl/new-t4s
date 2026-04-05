@@ -16,7 +16,7 @@ export default () => {
   const { t } = useTranslation(["common", "reserve"]);
 
   const [showCodeScreen, setShowCodeScreen] = useState<boolean>(true);
-  const [modifiableShopper, setModifiableShopper] = useState<IShopper>();
+  const [_modifiableShopper, setModifiableShopper] = useState<IShopper>();
 
   const onToggleScreen = () => {
     setShowCodeScreen((prev) => !prev);
@@ -30,9 +30,9 @@ export default () => {
     setModifiableShopper(shopperResponse.shopper);
   };
 
-  const closeModal = () => {
-    setModifiableShopper(undefined);
-  };
+  // const closeModal = () => {
+  //   setModifiableShopper(undefined);
+  // };
 
   return (
     <>

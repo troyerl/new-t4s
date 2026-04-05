@@ -7,7 +7,7 @@ export const Minus = (props: IconProps) => (
     viewBox="0 0 24 24"
     strokeWidth="1.5"
     stroke="currentColor"
-    className={props.class || "size-6"}
+    className={props.className || "size-6"}
   >
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
   </svg>
