@@ -1,4 +1,20 @@
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useHeroContext } from "../../../components/contextProviders/HeroProvider";
+import { BaseHeroSubHeader } from "../../../components/HeroSection";
+
 const FAQPage = () => {
+  const { t, i18n } = useTranslation(["faq"]);
+  const { onSetHeroMainText } = useHeroContext();
+
+  useEffect(() => {
+    onSetHeroMainText(
+      t("faq:hero.coloredText"),
+      t("faq:hero.subText"),
+      <BaseHeroSubHeader text={t("faq:hero.description")} />,
+    );
+  }, [i18n.language]);
+
   return (
     <div>
       <h1>Frequently Asked Questions</h1>

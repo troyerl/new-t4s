@@ -12,7 +12,7 @@ interface InputFieldProps {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   inputProps?: any;
-  class?: string;
+  className?: string;
   maxlength?: number;
   disabled?: boolean;
 }
@@ -27,7 +27,7 @@ export const InputField = ({
   startIcon,
   endIcon,
   inputProps,
-  class: className,
+  className,
   disabled = false,
 }: InputFieldProps) => {
   return (
@@ -99,7 +99,7 @@ export const FormInputField = ({
     <>
       <InputField
         {...inputProps}
-        class={error ? "border-red-600" : undefined}
+        className={error ? "border-red-600" : undefined}
       />
       {error && (
         <div className={`${errorClass} pt-2`}>

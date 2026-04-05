@@ -1,4 +1,9 @@
 {
+  "hero": {
+    "coloredText": "Where",
+    "subText": "can you find us?",
+    "description": "You can find us at the following address:"
+  },
   "title": "Feel free to contact us. <BreakComponent/> We'll be glad to hear from you.",
   "form": {
     "name": {

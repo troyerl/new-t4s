@@ -8,7 +8,7 @@ interface TextAreaFieldProps {
   onChange?: (value: string) => void;
   inputProps?: any;
   rows?: number;
-  class?: string;
+  className?: string;
   clearable?: boolean;
 }
 
@@ -19,7 +19,7 @@ export const TextAreaField = ({
   onChange,
   inputProps,
   rows = 4,
-  class: className,
+  className,
   clearable = true,
 }: TextAreaFieldProps) => {
   return (
@@ -29,7 +29,7 @@ export const TextAreaField = ({
         placeholder=" "
         rows={rows}
         value={value}
-        class={`peer focus:border-primary w-full rounded-md border border-gray-300 py-3 pr-10 pl-4 hover:border-gray-400 focus:outline-none ${className}`}
+        className={`peer focus:border-primary w-full rounded-md border border-gray-300 py-3 pr-10 pl-4 hover:border-gray-400 focus:outline-none ${className}`}
         onInput$={(event: InputEvent) =>
           onChange?.(
             event.target ? (event.target as HTMLInputElement).value : "",
@@ -81,7 +81,7 @@ export const FormTextAreaField = ({
     <>
       <TextAreaField
         {...inputProps}
-        class={error ? "border-red-600" : undefined}
+        className={error ? "border-red-600" : undefined}
       />
       {error && (
         <div className={`${errorClass} pt-2`}>

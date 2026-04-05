@@ -6,7 +6,7 @@ interface BaseButtonProps {
   type?: "submit" | "reset" | "button";
   isLoading?: boolean;
   id?: string;
-  class?: string;
+  className?: string;
   disabled?: boolean;
   color?: "primary" | "secondary";
   children: ReactNode;
@@ -17,7 +17,7 @@ export default ({
   type,
   isLoading = false,
   id,
-  class: className,
+  className,
   disabled = false,
   color = "primary",
   children,

@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "coloredText": "Reserve",
+    "subText": "a spot!"
+  },
+  "backToEvents": "Back to Events",
+  "steps": {
+    "inputInfo": "Input Info",
+    "selectTime": "Select a Time",
+    "confirmReservation": "Confirm Reservation",
+    "reservationComplete": "Reservation Complete"
+  },
+  "userInfo": {
+    "code": {
+      "title": "Welcome Back!",
+      "subtitle": "Input shopping code below.",
+      "helpText": "Already have a shopping code?",
+      "change": "Input My Code"
+    },
+    "manual": {
+      "title": "Welcome!",
+      "subtitle": "Let us know about your self below.",
+      "helpText": "Haven't shopped with us before or forgot your code?",
+      "change": "Input My Information"
+    }
+  }
+}

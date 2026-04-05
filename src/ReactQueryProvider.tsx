@@ -20,7 +20,7 @@ export const queryKeys = {
     checkLastUpdated ? "checkLastUpdated=true" : "checkLastUpdated=false",
   ],
   getShoppingSettings: () => ["shoppingSettings"],
-  getEvents: () => ["events"],
+  getEvents: (params?: object) => ["events", ...(params ? [params] : [])],
   getEvent: (eventId: string, showSpots?: boolean) => [
     "event",
     eventId,

@@ -26,6 +26,12 @@ export default createBrowserRouter([
         ),
       },
       {
+        path: `${routes.unauth.reserve.path}/:id`,
+        Component: lazy(
+          () => import("../pages/publicRoutes/Reserve/index.tsx"),
+        ),
+      },
+      {
         path: routes.unauth.contactUs.path,
         Component: lazy(
           () => import("../pages/publicRoutes/Contact/index.tsx"),

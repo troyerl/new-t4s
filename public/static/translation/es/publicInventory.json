@@ -1,4 +1,7 @@
 {
-  "heroColoredText": "¿Qué",
-  "heroText": "tenemos?"
+  "hero": {
+    "coloredText": "¿Qué",
+    "subText": "tenemos?",
+    "description": "A continuación se muestra una lista actual del inventario que tenemos en stock."
+  }
 }

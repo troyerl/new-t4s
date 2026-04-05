@@ -49,7 +49,7 @@ export default ({
                   className={`${column.key === sortKey ? "visible bg-gray-200" : "invisible"} ml-2 flex-none rounded-sm text-gray-400 group-hover:visible group-focus:visible`}
                 >
                   <ChevronUp
-                    class={`size-5 ${sortDirection === "ASC" ? "rotate-180" : ""}`}
+                    className={`size-5 ${sortDirection === "ASC" ? "rotate-180" : ""}`}
                   />
                 </span>
               )}

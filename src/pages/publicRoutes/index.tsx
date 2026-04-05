@@ -2,65 +2,30 @@ import { Outlet, useLocation } from "react-router";
 import { UnAuthNavbar } from "../../components/navbar/UnAuthNavbar";
 import Footer from "../../components/Footer";
 import BasePageContainer from "../../components/BasePageContainer";
-import HeroSection, {
-  BaseHeroSubHeader,
-  StackedHeader,
-} from "../../components/HeroSection";
+import HeroSection, { StackedHeader } from "../../components/HeroSection";
 import { routes } from "../../routes/paths";
-import AddressLink from "../../components/AddressLink";
-import { email } from "../../lib/constants";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ComboboxField } from "../../components/form/ComboboxField";
 import { SupportedLanguages } from "../../i18n";
+import HeroContextProvider, {
+  useHeroContext,
+} from "../../components/contextProviders/HeroProvider";
+import LanguageDropdown from "../../components/LanguageDropdown";
 
-const usePageHeroContent = () => {
-  const { t } = useTranslation(["common", "hero"]);
-
-  const pageHeroContent = {
-    [routes.unauth.inventory.path]: {
-      coloredText: "hero:inventory.coloredText",
-      subHeader: "hero:inventory.subText",
-      content: <BaseHeroSubHeader text={t("hero:inventory.description")} />,
-    },
-    [routes.unauth.reservation.path]: {
-      coloredText: "hero:reservation.coloredText",
-      subHeader: "hero:reservation.subText",
-      content: <BaseHeroSubHeader text={t("hero:reservation.description")} />,
-    },
-    [routes.unauth.contactUs.path]: {
-      coloredText: "hero:contact.coloredText",
-      subHeader: "hero:contact.subText",
-      content: (
-        <div className="flex flex-col items-center text-base text-white lg:items-start">
-          <AddressLink className="underline" id="address-link">
-            <>
-              <br className="lg:hidden" />
-              <span className="text-primary">
-                {" "}
-                ({t("common:clickForDirections")})
-              </span>
-            </>
-          </AddressLink>
-          <p>{email}</p>
-        </div>
-      ),
-    },
-    [routes.unauth.faqs.path]: {
-      coloredText: "hero:faq.coloredText",
-      subHeader: "hero:faq.subText",
-      content: <BaseHeroSubHeader text={t("hero:faq.description")} />,
-    },
-  };
-
-  return { pageHeroContent };
+const PublicLayoutContainer = () => {
+  return (
+    <HeroContextProvider>
+      <PublicLayout />
+    </HeroContextProvider>
+  );
 };
 
 const PublicLayout = () => {
   const loc = useLocation();
-  const { pageHeroContent } = usePageHeroContent();
-  const heroContent = pageHeroContent[loc.pathname];
-  const { t, i18n } = useTranslation(["hero"]);
+  const { t } = useTranslation(["hero"]);
+  const { isLoading, mainColoredText, baseTitleText, subText } =
+    useHeroContext();
 
   useEffect(() => {
     const label = Object.values(routes.unauth).find(
@@ -72,35 +37,17 @@ const PublicLayout = () => {
 
   return (
     <>
-      <UnAuthNavbar
-        leftAction={
-          <div className="max-w-50">
-            <ComboboxField
-              options={Object.entries(SupportedLanguages).map(
-                ([label, value]) => ({
-                  label,
-                  value,
-                }),
-              )}
-              value={i18n.language}
-              label="Language"
-              id="language-selector"
-              onChange={(e) => {
-                i18n.changeLanguage(e.value);
-              }}
-            />
-          </div>
-        }
-      />
+      <UnAuthNavbar leftAction={<LanguageDropdown />} />
       <HeroSection
         header={
-          <StackedHeader
-            main={t(heroContent.coloredText)}
-            subtext={t(heroContent.subHeader)}
-          />
+          <StackedHeader main={mainColoredText} subtext={baseTitleText} />
         }
       >
-        {heroContent.content}
+        {isLoading ? (
+          <div className="h-10 w-full lg:w-100 animate-pulse rounded-lg bg-gray-100"></div>
+        ) : (
+          subText
+        )}
       </HeroSection>
       <BasePageContainer>
         <Outlet />
@@ -110,4 +57,4 @@ const PublicLayout = () => {
   );
 };
 
-export default PublicLayout;
+export default PublicLayoutContainer;

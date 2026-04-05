@@ -1,9 +1,33 @@
 import { Trans, useTranslation } from "react-i18next";
 import GoogleMap from "../../../components/GoogleMap";
 import ContactUsForm from "./ContactUsForm";
+import { useEffect } from "react";
+import { useHeroContext } from "../../../components/contextProviders/HeroProvider";
+import AddressLink from "../../../components/AddressLink";
+import { email } from "../../../lib/constants";
 
 const ContactPage = () => {
-  const { i18n } = useTranslation(["contact"]);
+  const { t, i18n } = useTranslation(["contact", "common"]);
+  const { onSetHeroMainText } = useHeroContext();
+
+  useEffect(() => {
+    onSetHeroMainText(
+      t("contact:hero.coloredText"),
+      t("contact:hero.subText"),
+      <div className="flex flex-col items-center text-base text-white lg:items-start">
+        <AddressLink className="underline" id="address-link">
+          <>
+            <br className="lg:hidden" />
+            <span className="text-primary">
+              {" "}
+              ({t("common:clickForDirections")})
+            </span>
+          </>
+        </AddressLink>
+        <p>{email}</p>
+      </div>,
+    );
+  }, [i18n.language]);
 
   return (
     <div className="flex w-full flex-col gap-15 lg:flex-row">

@@ -22,7 +22,7 @@ const Home = () => {
           </AddressLink>
         </div>
 
-        <div className="sm:bg-size-auto flex grow flex-col bg-[url(../src/assets/img/background.jpg)] bg-size-[260%] bg-top bg-no-repeat sm:bg-cover sm:bg-center">
+        <div className="sm:bg-size-auto flex grow flex-col bg-[url(/assets/background.jpg)] bg-size-[260%] bg-top bg-no-repeat sm:bg-cover sm:bg-center">
           <UnAuthNavbar isDarkText={false} />
           <div className="flex grow items-center justify-center pt-10">
             <div className="flex h-full flex-col items-center">

@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "coloredText": "¡Reserve",
+    "subText": "su lugar ahora!"
+  },
+  "backToEvents": "Volver a los Acontecimientos",
+  "steps": {
+    "inputInfo": "Información de entrada",
+    "selectTime": "Seleccionar una hora",
+    "confirmReservation": "Confirmar reserva",
+    "reservationComplete": "Reserva completada"
+  },
+  "userInfo": {
+    "code": {
+      "title": "¡Bienvenido de nuevo!",
+      "subtitle": "Introduce el código de compra a continuación.",
+      "helpText": "¿Ya tienes un código de compras?",
+      "change": "Introduce mi código"
+    },
+    "manual": {
+      "title": "¡Bienvenido!",
+      "subtitle": "Cuéntanos sobre ti a continuación.",
+      "helpText": "¿No has comprado antes con nosotros o olvidaste tu código?",
+      "change": "Introduce mi información"
+    }
+  }
+}

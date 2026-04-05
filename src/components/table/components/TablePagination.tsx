@@ -104,7 +104,7 @@ const ViewAmountInfo = ({
         aria-label="Previous Page"
         data-testid="KeyboardArrowLeftIcon"
       >
-        <ChevronLeft class="mr-0.5 size-5" />
+        <ChevronLeft className="mr-0.5 size-5" />
       </button>
       <button
         onClick={onIncrementPage}
@@ -113,7 +113,7 @@ const ViewAmountInfo = ({
         aria-label="Next Page"
         data-testid="KeyboardArrowRightIcon"
       >
-        <ChevronRight class="ml-0.5 size-5" />
+        <ChevronRight className="ml-0.5 size-5" />
       </button>
     </div>
   </div>

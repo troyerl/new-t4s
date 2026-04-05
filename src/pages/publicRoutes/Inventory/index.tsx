@@ -1,7 +1,11 @@
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import useGetInventory from "../../../api/hooks/useGetInventory";
 import Card from "../../../components/card";
+import { useHeroContext } from "../../../components/contextProviders/HeroProvider";
 import Table from "../../../components/table";
 import type { IInventoryDisplay } from "../../../interface/Inventory";
+import { BaseHeroSubHeader } from "../../../components/HeroSection";
 
 const columns = [
   {
@@ -53,6 +57,16 @@ const LoadingContent = () => (
 
 const InventoryPage = () => {
   const { data = [], isLoading } = useGetInventory(true);
+  const { t, i18n } = useTranslation(["publicInventory"]);
+  const { onSetHeroMainText } = useHeroContext();
+
+  useEffect(() => {
+    onSetHeroMainText(
+      t("publicInventory:hero.coloredText"),
+      t("publicInventory:hero.subText"),
+      <BaseHeroSubHeader text={t("publicInventory:hero.description")} />,
+    );
+  }, [i18n.language]);
 
   if (isLoading) {
     return <LoadingContent />;

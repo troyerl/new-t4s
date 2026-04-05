@@ -4,12 +4,13 @@ import { Link } from "react-router";
 import { routes } from "../../routes/paths";
 import { UnAuthNavbar } from "../../components/navbar/UnAuthNavbar";
 import { Trans, useTranslation } from "react-i18next";
+import LanguageDropdown from "../../components/LanguageDropdown";
 
 const LoginPage = () => {
   const { t } = useTranslation(["login"]);
   return (
     <>
-      <UnAuthNavbar />
+      <UnAuthNavbar leftAction={<LanguageDropdown />} />
       <div className="flex h-screen w-screen flex-col">
         <div className="screen-width-border flex grow flex-col items-center justify-center py-10">
           <div className="w-full md:w-125">

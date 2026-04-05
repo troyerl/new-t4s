@@ -1,4 +1,4 @@
-import { useSnackbar } from "../../../components/SnackbarProvider";
+import { useSnackbar } from "../../../components/contextProviders/SnackbarProvider";
 import {
   FormInputField,
   FormTextAreaField,

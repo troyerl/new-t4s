@@ -1,8 +1,8 @@
 interface ErrorMessageProps {
   error: string;
-  class?: string;
+  className?: string;
 }
 
-export default ({ error, class: className = "" }: ErrorMessageProps) => (
+export default ({ error, className = "" }: ErrorMessageProps) => (
   <div className={`-mt-4 text-xs text-red-600 ${className}`}>{error}</div>
 );

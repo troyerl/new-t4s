@@ -5,7 +5,7 @@ export default {
   getEvents: async (): Promise<IEvent[]> => {
     return (await axiosInstance.get("/event/list")).data;
   },
-  getEvent: async (eventId: string, showSpots?: boolean): Promise<IEvent[]> => {
+  getEvent: async (eventId: string, showSpots?: boolean): Promise<IEvent> => {
     return (
       await axiosInstance.get(`/event/${eventId}`, {
         params: {

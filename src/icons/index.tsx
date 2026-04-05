@@ -1,5 +1,5 @@
 export interface IconProps {
-  class?: string;
+  className?: string;
 }
 
 // icons come from heroicons

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 import _ from "lodash";
+import { createPortal } from "react-dom";
 
 export interface ComboboxOptions {
   label: string;
@@ -9,8 +10,8 @@ export interface ComboboxOptions {
 
 interface ComboboxProps {
   options: ComboboxOptions[];
-  value: string;
-  class?: string;
+  value?: string;
+  className?: string;
   outline?: boolean;
   disabled?: boolean;
   label?: string;
@@ -21,7 +22,7 @@ interface ComboboxProps {
 
 export const ComboboxField = ({
   value,
-  class: className,
+  className,
   id,
   label,
   inputProps,
@@ -31,9 +32,11 @@ export const ComboboxField = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [displayOptions, setDisplayOptions] = useState(options);
   const [optionsStore] = useState(options);
+  const [dropdownStyle, setDropdownStyle] = useState({});
   const [selectedOption, setSelectedOption] = useState(
     options.find((option) => option.value === value) ?? null,
   );
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (!selectedOption) {
@@ -43,10 +46,25 @@ export const ComboboxField = ({
     onChange?.(selectedOption);
   }, [selectedOption, onChange]);
 
+  useLayoutEffect(() => {
+    console.log(showDropdown, inputRef.current);
+    if (showDropdown && inputRef.current) {
+      const rect = (inputRef.current as any).getBoundingClientRect();
+      setDropdownStyle({
+        position: "absolute",
+        top: rect.bottom + window.scrollY,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+        zIndex: 9999,
+      });
+    }
+  }, [showDropdown, inputRef]);
+
   return (
     <div className="relative block">
       <input
         id={id}
+        ref={inputRef}
         placeholder=" "
         type="text"
         value={selectedOption?.label}
@@ -75,7 +93,7 @@ export const ComboboxField = ({
           );
           setDisplayOptions(filteredOptions);
         }}
-        class={`peer focus:border-primary w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none ${selectedOption ? "pr-0" : ""} hover:border-gray-400 ${className}`}
+        className={`peer focus:border-primary w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none ${selectedOption ? "pr-0" : ""} hover:border-gray-400 ${className}`}
         {...inputProps}
       />
       <label
@@ -97,13 +115,32 @@ export const ComboboxField = ({
         >
           <path
             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-            clip-rule="evenodd"
-            fill-rule="evenodd"
+            clipRule="evenodd"
+            fillRule="evenodd"
           />
         </svg>
       </button>
 
-      {showDropdown && (
+      {showDropdown &&
+        createPortal(
+          <div
+            style={dropdownStyle}
+            className="max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg outline outline-black/5 sm:text-sm"
+          >
+            {displayOptions.map(({ label, value }) => (
+              <li
+                key={value}
+                onMouseDown={() => setSelectedOption({ label, value })}
+                className="cursor-pointer truncate px-3 py-2 hover:bg-gray-100"
+              >
+                {label}
+              </li>
+            ))}
+          </div>,
+          document.getElementById("portal-root")!,
+        )}
+
+      {/* {showDropdown && (
         <div className="absolute z-100 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg outline outline-black/5 sm:text-sm">
           {_.map(
             displayOptions,
@@ -124,13 +161,13 @@ export const ComboboxField = ({
             ),
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
 interface FormComboboxFieldProps extends ComboboxProps {
-  error: string;
+  error?: string;
 }
 
 export const FormComboboxField = ({
@@ -141,9 +178,9 @@ export const FormComboboxField = ({
     <>
       <ComboboxField
         {...inputProps}
-        class={error ? "border-red-600" : undefined}
+        className={error ? "border-red-600" : undefined}
       />
-      {error && <ErrorMessage error={error} class="mt-2" />}
+      {error && <ErrorMessage error={error} className="mt-2" />}
     </>
   );
 };

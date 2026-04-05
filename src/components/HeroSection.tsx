@@ -10,9 +10,11 @@ const HeroSection = ({
   header?: React.ReactNode;
 }) => {
   return (
-    <div className="screen-width-border flex w-screen flex-col items-center justify-items-center gap-4 bg-[url(/src/assets/svg/overlay.svg)] bg-cover bg-no-repeat p-4 py-20 text-center lg:items-start lg:pt-40 lg:text-left">
-      {header}
-      {children}
+    <div className="screen-width-border flex w-screen flex-wrap flex-col content-center items-center justify-items-center bg-[url(/src/assets/svg/overlay.svg)] bg-cover bg-no-repeat p-4 py-20 text-center lg:items-start lg:pt-40 lg:text-left xl:content-start">
+      <div className="w-full flex gap-4 flex-col lg:max-w-300 lg:text-left xl:max-w-478">
+        {header}
+        {children}
+      </div>
     </div>
   );
 };
